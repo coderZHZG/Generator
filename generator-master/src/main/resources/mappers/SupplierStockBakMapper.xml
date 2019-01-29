@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.code.dao.SupplierStockBakDao">
+
+    <resultMap id="sssbResultMap" type="com.code.entity.SupplierStockBak">
+        <id column="id" property="id"/> 
+        <result column="companyId" property="companyId"/> 
+        <result column="brandId" property="brandId"/> 
+        <result column="model" property="model"/> 
+        <result column="quantity" property="quantity"/> 
+        <result column="updatetime" property="updatetime"/> 
+        <result column="supplierModel" property="supplierModel"/> 
+        <result column="isDelete" property="isDelete"/> 
+        <result column="warehouseId" property="warehouseId"/> 
+        <result column="price" property="price"/> 
+        <result column="isTaxIncluded" property="isTaxIncluded"/> 
+        <result column="isComparison" property="isComparison"/> 
+        <result column="taxPrice" property="taxPrice"/> 
+        <result column="area" property="area"/> 
+        <result column="brandplaceorigindetailId" property="brandplaceorigindetailId"/> 
+        <result column="packtype" property="packtype"/> 
+
+        
+    </resultMap>
+
+    <sql id="sssbColumns">
+        sssb.id AS "id",
+        sssb.company_id AS "companyId",
+        sssb.brand_id AS "brandId",
+        sssb.model AS "model",
+        sssb.quantity AS "quantity",
+        sssb.updatetime AS "updatetime",
+        sssb.supplier_model AS "supplierModel",
+        sssb.is_delete AS "isDelete",
+        sssb.warehouse_id AS "warehouseId",
+        sssb.price AS "price",
+        sssb.isTaxIncluded AS "isTaxIncluded",
+        sssb.isComparison AS "isComparison",
+        sssb.taxPrice AS "taxPrice",
+        sssb.area AS "area",
+        sssb.brandPlaceOriginDetail_id AS "brandplaceorigindetailId",
+        sssb.packtype AS "packtype"
+    </sql>
+
+    <sql id="sssbJoins">
+        
+    </sql>
+
+    <insert id="insertSelective" parameterType="com.code.entity.SupplierStockBak">
+        INSERT INTO sc_supplier_stock_bak
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test= "id != null" >
+            `id`,
+        </if>
+        <if test= "companyId != null" >
+            `company_id`,
+        </if>
+        <if test= "brandId != null" >
+            `brand_id`,
+        </if>
+        <if test= "model != null" >
+            `model`,
+        </if>
+        <if test= "quantity != null" >
+            `quantity`,
+        </if>
+        <if test= "updatetime != null" >
+            `updatetime`,
+        </if>
+        <if test= "supplierModel != null" >
+            `supplier_model`,
+        </if>
+        <if test= "isDelete != null" >
+            `is_delete`,
+        </if>
+        <if test= "warehouseId != null" >
+            `warehouse_id`,
+        </if>
+        <if test= "price != null" >
+            `price`,
+        </if>
+        <if test= "isTaxIncluded != null" >
+            `isTaxIncluded`,
+        </if>
+        <if test= "isComparison != null" >
+            `isComparison`,
+        </if>
+        <if test= "taxPrice != null" >
+            `taxPrice`,
+        </if>
+        <if test= "area != null" >
+            `area`,
+        </if>
+        <if test= "brandplaceorigindetailId != null" >
+            `brandPlaceOriginDetail_id`,
+        </if>
+        <if test= "packtype != null" >
+            `packtype`,
+        </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test= "id != null" >
+            #{id},
+        </if>
+        <if test= "companyId != null" >
+            #{companyId},
+        </if>
+        <if test= "brandId != null" >
+            #{brandId},
+        </if>
+        <if test= "model != null" >
+            #{model},
+        </if>
+        <if test= "quantity != null" >
+            #{quantity},
+        </if>
+        <if test= "updatetime != null" >
+            #{updatetime},
+        </if>
+        <if test= "supplierModel != null" >
+            #{supplierModel},
+        </if>
+        <if test= "isDelete != null" >
+            #{isDelete},
+        </if>
+        <if test= "warehouseId != null" >
+            #{warehouseId},
+        </if>
+        <if test= "price != null" >
+            #{price},
+        </if>
+        <if test= "isTaxIncluded != null" >
+            #{isTaxIncluded},
+        </if>
+        <if test= "isComparison != null" >
+            #{isComparison},
+        </if>
+        <if test= "taxPrice != null" >
+            #{taxPrice},
+        </if>
+        <if test= "area != null" >
+            #{area},
+        </if>
+        <if test= "brandplaceorigindetailId != null" >
+            #{brandplaceorigindetailId},
+        </if>
+        <if test= "packtype != null" >
+            #{packtype},
+        </if>
+
+        </trim>
+    </insert>
+
+    <insert id="insertSelectiveBatch" >
+        INSERT INTO sc_supplier_stock_bak
+       (
+        d,
+        company_id,
+        brand_id,
+        model,
+        quantity,
+        updatetime,
+        supplier_model,
+        is_delete,
+        warehouse_id,
+        price,
+        isTaxIncluded,
+        isComparison,
+        taxPrice,
+        area,
+        brandPlaceOriginDetail_id,
+        packtype,
+
+        )
+        VALUES
+        <foreach collection ="list" item="sssb" separator =",">
+            (
+                #{sssb.id},
+        #{sssb.companyId},
+        #{sssb.brandId},
+        #{sssb.model},
+        #{sssb.quantity},
+        #{sssb.updatetime},
+        #{sssb.supplierModel},
+        #{sssb.isDelete},
+        #{sssb.warehouseId},
+        #{sssb.price},
+        #{sssb.isTaxIncluded},
+        #{sssb.isComparison},
+        #{sssb.taxPrice},
+        #{sssb.area},
+        #{sssb.brandplaceorigindetailId},
+        #{sssb.packtype},
+
+            )
+        </foreach>
+    </insert>
+
+    <select id="findList" resultMap="sssbResultMap" parameterType="map">
+        SELECT
+        <include refid="sssbColumns" />
+        FROM sc_supplier_stock_bak sssb <include refid="sssbJoins" />
+        WHERE 1=1
+        <if test= "id != null" >
+            and sssb.`id` =  #{id}
+        </if>
+        <if test= "companyId != null" >
+            and sssb.`company_id` =  #{companyId}
+        </if>
+        <if test= "brandId != null" >
+            and sssb.`brand_id` =  #{brandId}
+        </if>
+        <if test= "model != null" >
+            and sssb.`model` =  #{model}
+        </if>
+        <if test= "quantity != null" >
+            and sssb.`quantity` =  #{quantity}
+        </if>
+        <if test= "updatetime != null" >
+            and sssb.`updatetime` =  #{updatetime}
+        </if>
+        <if test= "supplierModel != null" >
+            and sssb.`supplier_model` =  #{supplierModel}
+        </if>
+        <if test= "isDelete != null" >
+            and sssb.`is_delete` =  #{isDelete}
+        </if>
+        <if test= "warehouseId != null" >
+            and sssb.`warehouse_id` =  #{warehouseId}
+        </if>
+        <if test= "price != null" >
+            and sssb.`price` =  #{price}
+        </if>
+        <if test= "isTaxIncluded != null" >
+            and sssb.`isTaxIncluded` =  #{isTaxIncluded}
+        </if>
+        <if test= "isComparison != null" >
+            and sssb.`isComparison` =  #{isComparison}
+        </if>
+        <if test= "taxPrice != null" >
+            and sssb.`taxPrice` =  #{taxPrice}
+        </if>
+        <if test= "area != null" >
+            and sssb.`area` =  #{area}
+        </if>
+        <if test= "brandplaceorigindetailId != null" >
+            and sssb.`brandPlaceOriginDetail_id` =  #{brandplaceorigindetailId}
+        </if>
+        <if test= "packtype != null" >
+            and sssb.`packtype` =  #{packtype}
+        </if>
+
+    </select>
+
+    <select id="findListCount" resultType="java.lang.Integer" parameterType="map">
+        SELECT count(1）
+            FROM sc_supplier_stock_bak sssb <include refid="sssbJoins" />
+        WHERE 1=1
+        <if test= "id != null" >
+            and sssb.`id` =  #{id}
+        </if>
+        <if test= "companyId != null" >
+            and sssb.`company_id` =  #{companyId}
+        </if>
+        <if test= "brandId != null" >
+            and sssb.`brand_id` =  #{brandId}
+        </if>
+        <if test= "model != null" >
+            and sssb.`model` =  #{model}
+        </if>
+        <if test= "quantity != null" >
+            and sssb.`quantity` =  #{quantity}
+        </if>
+        <if test= "updatetime != null" >
+            and sssb.`updatetime` =  #{updatetime}
+        </if>
+        <if test= "supplierModel != null" >
+            and sssb.`supplier_model` =  #{supplierModel}
+        </if>
+        <if test= "isDelete != null" >
+            and sssb.`is_delete` =  #{isDelete}
+        </if>
+        <if test= "warehouseId != null" >
+            and sssb.`warehouse_id` =  #{warehouseId}
+        </if>
+        <if test= "price != null" >
+            and sssb.`price` =  #{price}
+        </if>
+        <if test= "isTaxIncluded != null" >
+            and sssb.`isTaxIncluded` =  #{isTaxIncluded}
+        </if>
+        <if test= "isComparison != null" >
+            and sssb.`isComparison` =  #{isComparison}
+        </if>
+        <if test= "taxPrice != null" >
+            and sssb.`taxPrice` =  #{taxPrice}
+        </if>
+        <if test= "area != null" >
+            and sssb.`area` =  #{area}
+        </if>
+        <if test= "brandplaceorigindetailId != null" >
+            and sssb.`brandPlaceOriginDetail_id` =  #{brandplaceorigindetailId}
+        </if>
+        <if test= "packtype != null" >
+            and sssb.`packtype` =  #{packtype}
+        </if>
+
+    </select>
+
+
+    <select id="findById" resultMap="sssbResultMap">
+            SELECT
+        <include refid="sssbColumns" />
+            FROM sc_supplier_stock_bak sssb <include refid="sssbJoins" />
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <update id="updateSelective">
+        UPDATE sc_supplier_stock_bak SET
+        <if test= "id != null" >
+            `id` = #{id},
+        </if>
+        <if test= "companyId != null" >
+            `company_id` = #{companyId},
+        </if>
+        <if test= "brandId != null" >
+            `brand_id` = #{brandId},
+        </if>
+        <if test= "model != null" >
+            `model` = #{model},
+        </if>
+        <if test= "quantity != null" >
+            `quantity` = #{quantity},
+        </if>
+        <if test= "updatetime != null" >
+            `updatetime` = #{updatetime},
+        </if>
+        <if test= "supplierModel != null" >
+            `supplier_model` = #{supplierModel},
+        </if>
+        <if test= "isDelete != null" >
+            `is_delete` = #{isDelete},
+        </if>
+        <if test= "warehouseId != null" >
+            `warehouse_id` = #{warehouseId},
+        </if>
+        <if test= "price != null" >
+            `price` = #{price},
+        </if>
+        <if test= "isTaxIncluded != null" >
+            `isTaxIncluded` = #{isTaxIncluded},
+        </if>
+        <if test= "isComparison != null" >
+            `isComparison` = #{isComparison},
+        </if>
+        <if test= "taxPrice != null" >
+            `taxPrice` = #{taxPrice},
+        </if>
+        <if test= "area != null" >
+            `area` = #{area},
+        </if>
+        <if test= "brandplaceorigindetailId != null" >
+            `brandPlaceOriginDetail_id` = #{brandplaceorigindetailId},
+        </if>
+        <if test= "packtype != null" >
+            `packtype` = #{packtype},
+        </if>
+
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        DELETE FROM sc_supplier_stock_bak
+        WHERE id = #{id}
+    </update>
+
+</mapper>
